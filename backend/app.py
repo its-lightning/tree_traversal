@@ -5,24 +5,22 @@ from routes.api import api_bp
 
 
 def create_app():
-    app = Flask(__name__)
-    app.config.from_object(Config)
+    flask_app = Flask(__name__)
+    flask_app.config.from_object(Config)
 
-    CORS(app, resources={r"/api/*": {"origins": [
+    CORS(flask_app, resources={r"/api/*": {"origins": [
         "http://localhost:5173",
         "http://localhost:5174",
         r"https://.*\.vercel\.app",
     ]}})
 
-    app.register_blueprint(api_bp, url_prefix="/api")
+    flask_app.register_blueprint(api_bp, url_prefix="/api")
 
-    return app
+    return flask_app
 
+
+# Top-level `app` required by Vercel's Python runtime (static AST scan)
+app = create_app()
 
 if __name__ == "__main__":
-    app = create_app()
     app.run(debug=True, port=5050)
-else:
-    # Vercel's Python runtime requires a top-level `app` variable
-    app = create_app()
-
