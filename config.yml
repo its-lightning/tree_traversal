@@ -1,0 +1,11 @@
+# Cloudflare Tunnel configuration
+# Run: cloudflared tunnel --config ./config.yml run
+
+tunnel: e567bfb9-644a-4195-b903-f956ca086672
+credentials-file: /Users/vani/.cloudflared/e567bfb9-644a-4195-b903-f956ca086672.json
+
+ingress:
+  - hostname: tree.manojsrivatsava.com
+    service: http://localhost:8080
+  # Required catch-all
+  - service: http_status:404

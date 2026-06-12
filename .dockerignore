@@ -1,0 +1,14 @@
+# Node
+frontend/node_modules
+frontend/.cache
+
+# Python
+backend/venv
+backend/__pycache__
+backend/*.pyc
+backend/.env
+
+# Git / misc
+.git
+.gitignore
+**/*.md
