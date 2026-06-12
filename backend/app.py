@@ -8,7 +8,11 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173", "http://localhost:5174"]}})
+    CORS(app, resources={r"/api/*": {"origins": [
+        "http://localhost:5173",
+        "http://localhost:5174",
+        r"https://.*\.vercel\.app",
+    ]}})
 
     app.register_blueprint(api_bp, url_prefix="/api")
 
