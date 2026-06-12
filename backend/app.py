@@ -22,3 +22,7 @@ def create_app():
 if __name__ == "__main__":
     app = create_app()
     app.run(debug=True, port=5050)
+else:
+    # Vercel's Python runtime requires a top-level `app` variable
+    app = create_app()
+
